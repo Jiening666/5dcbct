@@ -156,26 +156,42 @@ figcaption.nowrap { white-space: nowrap; overflow: hidden; text-overflow: ellips
 .playbtn { border: 1px solid var(--border); background: var(--card); color: var(--accent); border-radius: 6px; padding: 0 0.45rem; font-size: 0.8rem; line-height: 1.4; cursor: pointer; vertical-align: middle; margin-right: 0.3rem; }
 .playbtn:hover { background: var(--accent-soft); }
 
-/* ---- 5D-CBCT additions ------------------------------------------------- */
-/* Panels come in two kinds: the three baselines are plain <img>, the proposed model is a
-   <div> panning a pre-rendered phi_r x phi_c sprite sheet. Both must sit on the same
-   baseline and hold the same box, so the geometry lives here and only the paint differs. */
+/* ======================================================================
+   5D-CBCT additions. Everything above is the EUReCA stylesheet unchanged.
+   ====================================================================== */
+
+/* Panels come in two kinds and must hold the same box: a still baseline is an <img>, a
+   state-dependent one is a <div> panning a pre-rendered sprite sheet. Only the paint differs. */
 .panel { width: 100%; height: auto; display: block; background: #000; border-radius: 4px; }
 .panel-live { background: #000 no-repeat; border-radius: 4px; width: 100%; }
 .sweep-cell.ours figcaption { color: var(--accent); font-weight: 600; }
 .sweep-cell.ours .panel-live { outline: 2px solid var(--accent); outline-offset: -2px; }
 .cell-sub { display: block; font-size: 0.78rem; color: var(--muted); font-weight: 400; }
-.state-badge { font-variant-numeric: tabular-nums; }
-.ctrl-group { margin-bottom: 0.2rem; }
-.viewer-controls { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: flex-start;
+/* shown alone, the proposed reconstruction should not stretch to the full column width:
+   these are 200-280 px panels and upscaling them past ~620 px only blurs them */
+.sweep-grid.single .sweep-cell { max-width: 620px; margin: 0 auto; }
+
+/* viewer controls: two rows, so respiratory and cardiac state sit side by side */
+.viewer-controls { display: flex; flex-direction: column; gap: 1rem;
   background: var(--card); border: 1px solid var(--border); border-radius: 8px;
   padding: 1rem 1.1rem; margin: 1rem 0 1.25rem; }
-.viewer-controls .slider-block { max-width: 340px; }
-.legend { font-size: 0.85rem; color: var(--muted); margin: 0.4rem 0 0; }
+.vc-row { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: flex-start; }
+.viewer-controls .slider-block { flex: 1 1 250px; max-width: 380px; }
+.slider-row { display: flex; align-items: center; gap: 0.55rem; }
+.slider-row input[type=range] { flex: 1 1 auto; margin: 0; }
+.ticks.indented { padding-left: 3.1rem; }
+.viewer-controls .playbtn { font-size: 1rem; line-height: 1; padding: 0.42rem 0.7rem;
+  min-width: 2.5rem; border-radius: 6px; margin: 0; }
+.playbtn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.playbtn.active:hover { background: var(--accent); }
+
+.legend { font-size: 0.85rem; color: var(--muted); margin: 0.5rem 0 0; }
 .legend b { color: var(--fg); }
 img.zoomable { cursor: zoom-in; }
+
 table.nums td:nth-child(n+2), table.nums th:nth-child(n+2) { text-align: right;
   font-variant-numeric: tabular-nums; }
 table.nums tr.total td { font-weight: 700; border-top: 2px solid var(--border); }
+
 /* their lightbox pans a zoomed image; this one just fits the panel to the viewport */
 #lb-img { max-width: 92vw; max-height: 92vh; object-fit: contain; cursor: zoom-out; }

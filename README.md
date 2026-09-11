@@ -8,28 +8,38 @@ Three clinical Halcyon HyperSight acquisitions (866 projections, ~60 s, no addit
 dose) compared across four reconstructions on one common grid, one common intensity scale and
 one display window:
 
-| | |
-|---|---|
-| Unbinned FDK | all 866 views, no motion state |
-| Respiratory-binned FDK | ~80 views per bin, 10 bins |
-| Static Gaussian | all views, motion-averaged |
-| **Proposed 5D** | continuous respiratory–cardiac state |
+| | state | views per output |
+|---|---|---|
+| **Proposed 5D** | continuous respiratory × cardiac | all 866, every state |
+| Static Gaussian | none | all 866 |
+| Unbinned FDK | none | all 866 |
+| Respiratory-binned FDK | 10 discrete respiratory bins | 77–96 |
+| Dual-gated FDK | 10 × 6 respiratory × cardiac bins | 7–23 |
 
-Pick a patient and a plane, step through five slices per plane with the slider or the mouse
-wheel, and move respiratory and cardiac state independently. Only the 5D panel responds to
-state — the three baselines have no state to move.
+The proposed reconstruction is shown alone by default; **Show beside ours** adds any baseline
+next to it. Pick a patient and a plane, step through five slices with the slider, the mouse
+wheel or the arrow keys, and move respiratory and cardiac state independently.
+
+Both binned FDKs carry their own state and are shown with it — a bin per stop — because
+freezing them at one bin would understate them. What they cannot do is sit between bins, and
+the cardiac axis costs them an order of magnitude in views.
 
 ### How it renders
 
 No server, no renderer, no GPU. Each fitted model was queried offline on a 10 × 6 grid of
 respiratory × cardiac states, for every plane and slice, and the results packed into one sprite
-sheet per (plane, slice); moving a state slider pans that sheet with CSS. The page itself is
-23 KB and fetches only the images it is showing.
+sheet per (plane, slice); the binned FDKs were reconstructed once per bin and packed the same
+way. Moving a state slider pans a sheet with CSS. The page itself is 27 KB and fetches only the
+images it is showing.
+
+A **signal extraction** section plays the per-frame QA video for each case: the projection with
+the tracked landmarks drawn on it, those surrogates band-passed and fused, and the respiratory
+and cardiac traces the reconstruction was actually driven by.
 
 ```
 index.html          the page
 static/style.css    styling
-assets/             420 baked panels and sprite sheets + the method figure
+assets/             480 baked panels and sprite sheets, 3 QA videos, the method figure
 assets/index.json   plane, slice and window metadata for the bake
 ```
 
