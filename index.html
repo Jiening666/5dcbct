@@ -58,44 +58,44 @@
       <div class="vc-row">
         <div class="ctrl-group">
           <span class="ctrl-label">Patient</span>
-          <div class="seg" id="seg-case"></div>
+          <div class="seg" id="pt-case"></div>
         </div>
         <div class="ctrl-group">
           <span class="ctrl-label">Plane</span>
-          <div class="seg" id="seg-view"></div>
+          <div class="seg" id="pt-view"></div>
         </div>
         <div class="ctrl-group">
           <span class="ctrl-label">Show beside ours</span>
-          <div class="seg" id="seg-ref"></div>
+          <div class="seg" id="pt-ref"></div>
         </div>
       </div>
       <div class="vc-row">
         <div class="ctrl-group slider-block">
-          <span class="ctrl-label">Slice: <output id="sl-val">0</output> mm from reference</span>
-          <input type="range" id="sl" min="0" max="4" step="1" value="2" aria-label="Slice position">
-          <div class="ticks" id="sl-ticks"></div>
+          <span class="ctrl-label">Slice: <output id="pt-sl-val">0</output> mm from reference</span>
+          <input type="range" id="pt-sl" min="0" max="4" step="1" value="2" aria-label="Slice position">
+          <div class="ticks" id="pt-sl-ticks"></div>
         </div>
         <div class="ctrl-group slider-block">
-          <span class="ctrl-label">Respiratory state &phi;<sup>r</sup>: <output id="pr-val">0.50</output></span>
+          <span class="ctrl-label">Respiratory state &phi;<sup>r</sup>: <output id="pt-pr-val">0.50</output></span>
           <div class="slider-row">
-            <button class="playbtn" id="play-r" aria-label="Animate the breathing cycle" title="Animate the breathing cycle">&#9654;</button>
-            <input type="range" id="pr" min="0" max="9" step="1" value="5" aria-label="Respiratory state">
+            <button class="playbtn" id="pt-play-r" aria-label="Animate the breathing cycle" title="Animate the breathing cycle">&#9654;</button>
+            <input type="range" id="pt-pr" min="0" max="9" step="1" value="5" aria-label="Respiratory state">
           </div>
           <div class="ticks indented"><span>0.0</span><span>0.5</span><span>0.9</span></div>
         </div>
         <div class="ctrl-group slider-block">
-          <span class="ctrl-label">Cardiac state &phi;<sup>c</sup>: <output id="pc-val">0.50</output></span>
+          <span class="ctrl-label">Cardiac state &phi;<sup>c</sup>: <output id="pt-pc-val">0.50</output></span>
           <div class="slider-row">
-            <button class="playbtn" id="play-c" aria-label="Animate the cardiac cycle" title="Animate the cardiac cycle">&#9654;</button>
-            <input type="range" id="pc" min="0" max="5" step="1" value="3" aria-label="Cardiac state">
+            <button class="playbtn" id="pt-play-c" aria-label="Animate the cardiac cycle" title="Animate the cardiac cycle">&#9654;</button>
+            <input type="range" id="pt-pc" min="0" max="5" step="1" value="3" aria-label="Cardiac state">
           </div>
           <div class="ticks indented"><span>0.0</span><span>0.5</span><span>0.83</span></div>
         </div>
       </div>
     </div>
 
-    <div class="sweep-grid" id="cmp"></div>
-    <p class="legend" id="cmp-legend"></p>
+    <div class="sweep-grid" id="pt-cmp"></div>
+    <p class="legend" id="pt-legend"></p>
   </section>
 
   <section id="motion">
@@ -107,7 +107,7 @@
       move &mdash; while the lung interior stays dark. Each map is scaled to its own 99.8th percentile, so
       brightness is comparable <em>within</em> a map and never between them; in absolute terms the cardiac
       signature is far smaller, which is why it buys tenths of a decibel where respiration buys whole ones.</p>
-    <div class="sweep-grid" id="diffs"></div>
+    <div class="sweep-grid" id="pt-diffs"></div>
   </section>
 
   <section id="signals">
@@ -141,6 +141,61 @@
       the phantom study below.</p>
     <div class="table-wrap" id="ptable"></div>
     <p class="note" id="fdknote"></p>
+  </section>
+
+  <section id="phantom-viewer">
+    <h2>Phantom: the same comparison, against ground truth</h2>
+    <p class="note">The XCAT cases carry a dual-gated 20&nbsp;&times;&nbsp;20 grid of truth volumes on
+      the reconstruction's own voxel grid, so the truth can be put beside the reconstructions at the
+      same physiological state &mdash; which is exactly what the patient study cannot do. Both cases are
+      the same body; only the acquisition schedule differs. <b>Ground truth is shown beside the model by
+      default.</b> Truth is the reference for everything here: the display window, the body mask, the
+      plane search, and the single global scale each reconstruction is fitted with at the reference
+      state and then held to.</p>
+    <div class="viewer-controls">
+      <div class="vc-row">
+        <div class="ctrl-group">
+          <span class="ctrl-label">Phantom case</span>
+          <div class="seg" id="ph-case"></div>
+        </div>
+        <div class="ctrl-group">
+          <span class="ctrl-label">Plane</span>
+          <div class="seg" id="ph-view"></div>
+        </div>
+        <div class="ctrl-group">
+          <span class="ctrl-label">Show beside ours</span>
+          <div class="seg" id="ph-ref"></div>
+        </div>
+      </div>
+      <div class="vc-row">
+        <div class="ctrl-group slider-block">
+          <span class="ctrl-label">Slice: <output id="ph-sl-val">0</output> mm from reference</span>
+          <input type="range" id="ph-sl" min="0" max="4" step="1" value="2" aria-label="Slice position">
+          <div class="ticks" id="ph-sl-ticks"></div>
+        </div>
+        <div class="ctrl-group slider-block">
+          <span class="ctrl-label">Respiratory state &phi;<sup>r</sup>: <output id="ph-pr-val">0.50</output></span>
+          <div class="slider-row">
+            <button class="playbtn" id="ph-play-r" aria-label="Animate the breathing cycle" title="Animate the breathing cycle">&#9654;</button>
+            <input type="range" id="ph-pr" min="0" max="9" step="1" value="5" aria-label="Respiratory state">
+          </div>
+          <div class="ticks indented"><span>0.0</span><span>0.5</span><span>0.9</span></div>
+        </div>
+        <div class="ctrl-group slider-block">
+          <span class="ctrl-label">Cardiac state &phi;<sup>c</sup>: <output id="ph-pc-val">0.50</output></span>
+          <div class="slider-row">
+            <button class="playbtn" id="ph-play-c" aria-label="Animate the cardiac cycle" title="Animate the cardiac cycle">&#9654;</button>
+            <input type="range" id="ph-pc" min="0" max="5" step="1" value="3" aria-label="Cardiac state">
+          </div>
+          <div class="ticks indented"><span>0.0</span><span>0.5</span><span>0.83</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sweep-grid" id="ph-cmp"></div>
+    <p class="legend" id="ph-legend"></p>
+    <div class="sweep-grid" id="ph-diffs"></div>
+    <p class="note">Difference between two states of the fitted model, as in the patient section above.</p>
   </section>
 
   <section id="phantom">
@@ -192,187 +247,185 @@
 </div>
 
 <script>
-const D = {"views": ["coronal", "sagittal", "axial", "mediastinum"], "nr": 10, "nc": 6, "nsl": 5, "cases": [{"slug": "case-a", "label": "Patient A", "sizes": {"coronal": [207, 140], "sagittal": [132, 140], "axial": [207, 132], "mediastinum": [60, 60]}, "slices": {"coronal": [133, 143, 153, 163, 173], "sagittal": [107, 117, 127, 137, 147], "axial": [23, 33, 43, 53, 63], "mediastinum": [57, 63, 69, 75, 81]}, "mm": {"coronal": [-40, -20, 0, 20, 40], "sagittal": [-40, -20, 0, 20, 40], "axial": [-40, -20, 0, 20, 40], "mediastinum": [-24, -12, 0, 12, 24]}, "step_mm": {"coronal": 20, "sagittal": 20, "axial": 20, "mediastinum": 12}, "n_views": 866, "window": 0.028291517402976786, "diff_window": {"diff_r": 0.016803251858800636, "diff_c": 0.006572650233283638, "diff": 0.016837791092693802}, "views_resp": [77, 96], "views_dual": [7, 22], "empty_dual": 0}, {"slug": "case-b", "label": "Patient B", "sizes": {"coronal": [206, 132], "sagittal": [236, 132], "axial": [206, 236], "mediastinum": [60, 60]}, "slices": {"coronal": [137, 147, 157, 167, 177], "sagittal": [72, 82, 92, 102, 112], "axial": [17, 27, 37, 47, 57], "mediastinum": [56, 62, 68, 74, 80]}, "mm": {"coronal": [-40, -20, 0, 20, 40], "sagittal": [-40, -20, 0, 20, 40], "axial": [-40, -20, 0, 20, 40], "mediastinum": [-24, -12, 0, 12, 24]}, "step_mm": {"coronal": 20, "sagittal": 20, "axial": 20, "mediastinum": 12}, "n_views": 866, "window": 0.027621186152100564, "diff_window": {"diff_r": 0.015402074262499796, "diff_c": 0.004388797372579554, "diff": 0.015410639457404545}, "views_resp": [82, 95], "views_dual": [8, 23], "empty_dual": 0}, {"slug": "case-c", "label": "Patient C", "sizes": {"coronal": [279, 140], "sagittal": [230, 140], "axial": [279, 230], "mediastinum": [60, 60]}, "slices": {"coronal": [87, 97, 107, 117, 127], "sagittal": [50, 60, 70, 80, 90], "axial": [2, 12, 22, 32, 42], "mediastinum": [50, 56, 62, 68, 74]}, "mm": {"coronal": [-40, -20, 0, 20, 40], "sagittal": [-40, -20, 0, 20, 40], "axial": [-40, -20, 0, 20, 40], "mediastinum": [-24, -12, 0, 12, 24]}, "step_mm": {"coronal": 20, "sagittal": 20, "axial": 20, "mediastinum": 12}, "n_views": 866, "window": 0.02840548449195913, "diff_window": {"diff_r": 0.016686619918793465, "diff_c": 0.003304377555847185, "diff": 0.016651055958122135}, "views_resp": [78, 94], "views_dual": [7, 21], "empty_dual": 0}], "ptable": {"cols": ["Model", "Patient A PSNR", "SSIM", "Patient B PSNR", "SSIM", "Patient C PSNR", "SSIM"], "rows": [{"cells": ["Static, no motion model", "41.46", "0.9777", "40.20", "0.9695", "39.12", "0.9657"], "cls": null}, {"cells": ["Phase-binned FDK, 10 respiratory bins", "22.02", "0.6256", "21.90", "0.6480", "21.68", "0.6158"], "cls": null}, {"cells": ["Unbinned FDK, all 866 views", "25.99", "0.8010", "23.89", "0.7863", "24.59", "0.7829"], "cls": null}, {"cells": ["Cardiac branch only", "42.34", "0.9816", "40.90", "0.9732", "40.03", "0.9721"], "cls": null}, {"cells": ["Respiratory branch only", "45.64", "0.9855", "43.19", "0.9768", "42.32", "0.9756"], "cls": null}, {"cells": ["Proposed 5D, both axes", "45.78", "0.9858", "43.26", "0.9769", "42.52", "0.9759"], "cls": "ours"}, {"cells": ["Gain over static", "+4.31", "+0.0081", "+3.06", "+0.0074", "+3.40", "+0.0102"], "cls": "total"}], "cls": "nums", "caption": "Rendered projections against the measured projections, all 866 views per case. Highlighted row is the proposed model."}, "xtable": {"cols": ["Model / state source", "2D PSNR", "2D SSIM", "3D PSNR", "3D SSIM"], "cls": "nums", "caption": "Manuscript Table 3 \u2014 twelve dual-gated XCAT cases, averaged over 400 physiological states each. The oracle differs from the proposed result only in using true rather than projection-estimated states.", "rows": [{"cells": ["Static, no motion model", "40.20", "0.9874", "26.44", "0.7031"]}, {"cells": ["Phase-binned FDK, 10 respiratory bins", "22.76", "0.6395", "14.35", "0.1725"]}, {"cells": ["Proposed 5D, projection-estimated state", "51.33", "0.9971", "28.05", "0.7693"], "cls": "ours"}, {"cells": ["Proposed 5D, true state (oracle)", "52.64", "0.9974", "28.28", "0.7763"]}]}, "notes": [{"h": "One scale, one window", "p": "FDK carries an arbitrary global factor and the Gaussian models carry the canonical anatomy's own scale, so each volume is fitted to the 5D model by least squares over the thorax and every panel shares one window. Windowing each panel separately would show every method at its own best contrast."}, {"h": "Binned FDK moves too", "p": "It reconstructs each respiratory bin independently, so it genuinely has a respiratory state and is shown with it: 77\u201396 views per bin, ten discrete stops. Freezing it at one bin would understate it. What it cannot do is sit between bins, and its state is as coarse as the gating."}, {"h": "Dual gating pays in views", "p": "Adding a cardiac axis splits the same 866 projections into 60 bins of 7\u201322 views. The cardiac motion becomes visible and the reconstruction becomes sparse-view streaks; that trade is the reason for modelling both axes continuously instead of gating them."}, {"h": "Each FDK family on one scale", "p": "Within a family every bin is shown on the scale fitted to its fullest bin, so the intensity differences between bins survive. Fitting each bin separately would flatten part of what binning costs."}, {"h": "Planes chosen by motion, not by eye", "p": "The reference plane of each view sits at the median position of the most-moving voxels near the lungs; the slider steps 20 mm either side of it (12 mm on the mediastinal zoom). The zoom is placed anatomically \u2014 soft tissue enclosed by the lungs at 45% of lung height \u2014 because peak cardiac difference lands on a pulsating vessel instead."}, {"h": "Patient numbers are fit metrics", "p": "Without volumetric ground truth, projection PSNR measures whether the model explains the data \u2014 not whether the recovered motion is physically correct. The motion claim rests on the XCAT study, where truth exists."}, {"h": "Nothing here renders on demand", "p": "Every state of every method was reconstructed or queried offline and packed into sprite sheets \u2014 60 states for the proposed model and the dual-gated FDK, 10 for the respiratory-binned one, per plane and slice. Moving a slider pans a sheet, so the page needs no GPU, no server and no renderer."}, {"h": "One acquisition is newer than the tables", "p": "One of the three was prepared after the manuscript tables were written: its angles come from the session Scan.xml rather than the patient-root one, which belongs to a different fraction and winds the gantry the other way. It is initialized by init_uniform like the other two."}], "fdknote": "Unbinned FDK beats respiratory-binned FDK on all three patients (25.99 / 23.89 / 24.59 dB against 22.02 / 21.90 / 21.68 dB). Dropping from 866 views to 77\u201396 per bin costs more in sparse-view streaking than motion blur costs in the first place \u2014 which is the practical argument for modelling motion rather than gating it away.", "footnote": "Reconstructions scored by <code>tools/proj_2d_metrics.py</code> and <code>tools/fdk_patient.py</code>; panels baked from the same checkpoints on one RTX 5090. Phantom figures are manuscript Tables 3 and 5. Patients are de-identified and acquisition dates removed.", "resp_source": {"case-a": "the fused median of the liver apex and both lung inferior borders", "case-b": "the fused median of the liver apex and both lung inferior borders", "case-c": "the liver apex alone \u2014 this acquisition does not contain the whole lung, so the lung inferior-border landmarks clamp at the detector edge and are excluded from the fusion"}};
+const D = {"views": ["coronal", "sagittal", "axial", "mediastinum"], "nr": 10, "nc": 6, "nsl": 5, "cases": [{"slug": "case-a", "label": "Patient A", "sizes": {"coronal": [207, 140], "sagittal": [132, 140], "axial": [207, 132], "mediastinum": [60, 60]}, "slices": {"coronal": [133, 143, 153, 163, 173], "sagittal": [107, 117, 127, 137, 147], "axial": [23, 33, 43, 53, 63], "mediastinum": [57, 63, 69, 75, 81]}, "mm": {"coronal": [-40, -20, 0, 20, 40], "sagittal": [-40, -20, 0, 20, 40], "axial": [-40, -20, 0, 20, 40], "mediastinum": [-24, -12, 0, 12, 24]}, "step_mm": {"coronal": 20, "sagittal": 20, "axial": 20, "mediastinum": 12}, "n_views": 866, "window": 0.028291517402976786, "diff_window": {"diff_r": 0.016803251858800636, "diff_c": 0.006572650233283638, "diff": 0.016837791092693802}, "views_resp": [77, 96], "views_dual": [7, 22], "empty_dual": 0}, {"slug": "case-b", "label": "Patient B", "sizes": {"coronal": [206, 132], "sagittal": [236, 132], "axial": [206, 236], "mediastinum": [60, 60]}, "slices": {"coronal": [137, 147, 157, 167, 177], "sagittal": [72, 82, 92, 102, 112], "axial": [17, 27, 37, 47, 57], "mediastinum": [56, 62, 68, 74, 80]}, "mm": {"coronal": [-40, -20, 0, 20, 40], "sagittal": [-40, -20, 0, 20, 40], "axial": [-40, -20, 0, 20, 40], "mediastinum": [-24, -12, 0, 12, 24]}, "step_mm": {"coronal": 20, "sagittal": 20, "axial": 20, "mediastinum": 12}, "n_views": 866, "window": 0.027621186152100564, "diff_window": {"diff_r": 0.015402074262499796, "diff_c": 0.004388797372579554, "diff": 0.015410639457404545}, "views_resp": [82, 95], "views_dual": [8, 23], "empty_dual": 0}, {"slug": "case-c", "label": "Patient C", "sizes": {"coronal": [279, 140], "sagittal": [230, 140], "axial": [279, 230], "mediastinum": [60, 60]}, "slices": {"coronal": [87, 97, 107, 117, 127], "sagittal": [50, 60, 70, 80, 90], "axial": [2, 12, 22, 32, 42], "mediastinum": [50, 56, 62, 68, 74]}, "mm": {"coronal": [-40, -20, 0, 20, 40], "sagittal": [-40, -20, 0, 20, 40], "axial": [-40, -20, 0, 20, 40], "mediastinum": [-24, -12, 0, 12, 24]}, "step_mm": {"coronal": 20, "sagittal": 20, "axial": 20, "mediastinum": 12}, "n_views": 866, "window": 0.02840548449195913, "diff_window": {"diff_r": 0.016686619918793465, "diff_c": 0.003304377555847185, "diff": 0.016651055958122135}, "views_resp": [78, 94], "views_dual": [7, 21], "empty_dual": 0}], "ptable": {"cols": ["Model", "Patient A PSNR", "SSIM", "Patient B PSNR", "SSIM", "Patient C PSNR", "SSIM"], "rows": [{"cells": ["Static, no motion model", "41.46", "0.9777", "40.20", "0.9695", "39.12", "0.9657"], "cls": null}, {"cells": ["Phase-binned FDK, 10 respiratory bins", "22.02", "0.6256", "21.90", "0.6480", "21.68", "0.6158"], "cls": null}, {"cells": ["Unbinned FDK, all 866 views", "25.99", "0.8010", "23.89", "0.7863", "24.59", "0.7829"], "cls": null}, {"cells": ["Cardiac branch only", "42.34", "0.9816", "40.90", "0.9732", "40.03", "0.9721"], "cls": null}, {"cells": ["Respiratory branch only", "45.64", "0.9855", "43.19", "0.9768", "42.32", "0.9756"], "cls": null}, {"cells": ["Proposed 5D, both axes", "45.78", "0.9858", "43.26", "0.9769", "42.52", "0.9759"], "cls": "ours"}, {"cells": ["Gain over static", "+4.31", "+0.0081", "+3.06", "+0.0074", "+3.40", "+0.0102"], "cls": "total"}], "cls": "nums", "caption": "Rendered projections against the measured projections, all 866 views per case. Highlighted row is the proposed model."}, "xtable": {"cols": ["Model / state source", "2D PSNR", "2D SSIM", "3D PSNR", "3D SSIM"], "cls": "nums", "caption": "Manuscript Table 3 \u2014 twelve dual-gated XCAT cases, averaged over 400 physiological states each. The oracle differs from the proposed result only in using true rather than projection-estimated states.", "rows": [{"cells": ["Static, no motion model", "40.20", "0.9874", "26.44", "0.7031"]}, {"cells": ["Phase-binned FDK, 10 respiratory bins", "22.76", "0.6395", "14.35", "0.1725"]}, {"cells": ["Proposed 5D, projection-estimated state", "51.33", "0.9971", "28.05", "0.7693"], "cls": "ours"}, {"cells": ["Proposed 5D, true state (oracle)", "52.64", "0.9974", "28.28", "0.7763"]}]}, "notes": [{"h": "One scale, one window", "p": "FDK carries an arbitrary global factor and the Gaussian models carry the canonical anatomy's own scale, so each volume is fitted to the 5D model by least squares over the thorax and every panel shares one window. Windowing each panel separately would show every method at its own best contrast."}, {"h": "Binned FDK moves too", "p": "It reconstructs each respiratory bin independently, so it genuinely has a respiratory state and is shown with it: 77\u201396 views per bin, ten discrete stops. Freezing it at one bin would understate it. What it cannot do is sit between bins, and its state is as coarse as the gating."}, {"h": "Dual gating pays in views", "p": "Adding a cardiac axis splits the same 866 projections into 60 bins of 7\u201322 views. The cardiac motion becomes visible and the reconstruction becomes sparse-view streaks; that trade is the reason for modelling both axes continuously instead of gating them."}, {"h": "Each FDK family on one scale", "p": "Within a family every bin is shown on the scale fitted to its fullest bin, so the intensity differences between bins survive. Fitting each bin separately would flatten part of what binning costs."}, {"h": "Planes chosen by motion, not by eye", "p": "The reference plane of each view sits at the median position of the most-moving voxels near the lungs; the slider steps 20 mm either side of it (12 mm on the mediastinal zoom). The zoom is placed anatomically \u2014 soft tissue enclosed by the lungs at 45% of lung height \u2014 because peak cardiac difference lands on a pulsating vessel instead."}, {"h": "Patient numbers are fit metrics", "p": "Without volumetric ground truth, projection PSNR measures whether the model explains the data \u2014 not whether the recovered motion is physically correct. The motion claim rests on the XCAT study, where truth exists."}, {"h": "Nothing here renders on demand", "p": "Every state of every method was reconstructed or queried offline and packed into sprite sheets \u2014 60 states for the proposed model and the dual-gated FDK, 10 for the respiratory-binned one, per plane and slice. Moving a slider pans a sheet, so the page needs no GPU, no server and no renderer."}, {"h": "One acquisition is newer than the tables", "p": "One of the three was prepared after the manuscript tables were written: its angles come from the session Scan.xml rather than the patient-root one, which belongs to a different fraction and winds the gantry the other way. It is initialized by init_uniform like the other two."}, {"h": "The phantom is where truth exists", "p": "XCAT carries a dual-gated 20 x 20 grid of volumes on the reconstruction's own voxel grid, so the truth panel is the real anatomy at the requested state, not another reconstruction. The viewer samples the nearest grid cell to the state the sliders ask for."}, {"h": "Truth is the reference, not the model", "p": "On the phantom the display window, the body mask, the plane search and the single global scale each reconstruction is fitted with all come from truth. That scale is fitted once at the reference state and held: re-fitting it per state lets the scale absorb motion, which once scored a static baseline at +0.99 waveform correlation purely from its own scale drifting 0.3%."}, {"h": "Two schedules, one body", "p": "The two phantom cases are the same anatomy acquired under different schedules. The analytic one spreads projections evenly over the state torus; the replayed patient one does not, and its dual-gated bins range from 6 to 23 views against 12\u201316 for the analytic one."}], "phantom": {"views": ["coronal", "sagittal", "axial", "mediastinum"], "nr": 10, "nc": 6, "nsl": 5, "cases": [{"slug": "phan-a", "label": "XCAT \u00b7 analytic schedule", "sizes": {"coronal": [161, 138], "sagittal": [132, 138], "axial": [132, 161], "mediastinum": [60, 60]}, "slices": {"coronal": [74, 84, 94, 104, 114], "sagittal": [108, 118, 128, 138, 148], "axial": [24, 34, 44, 54, 64], "mediastinum": [53, 59, 65, 71, 77]}, "mm": {"coronal": [-40, -20, 0, 20, 40], "sagittal": [-40, -20, 0, 20, 40], "axial": [-40, -20, 0, 20, 40], "mediastinum": [-24, -12, 0, 12, 24]}, "step_mm": {"coronal": 20, "sagittal": 20, "axial": 20, "mediastinum": 12}, "n_views": 866, "window": 0.02302919514477253, "diff_window": {"diff_r": 0.013053123839199543, "diff_c": 0.0048365117982029915, "diff": 0.014320071786642075}, "views_resp": [81, 92], "views_dual": [12, 16], "empty_dual": 0, "truth_grid": [20, 20]}, {"slug": "phan-b", "label": "XCAT \u00b7 replayed schedule", "sizes": {"coronal": [161, 138], "sagittal": [132, 138], "axial": [132, 161], "mediastinum": [60, 60]}, "slices": {"coronal": [74, 84, 94, 104, 114], "sagittal": [108, 118, 128, 138, 148], "axial": [24, 34, 44, 54, 64], "mediastinum": [53, 59, 65, 71, 77]}, "mm": {"coronal": [-40, -20, 0, 20, 40], "sagittal": [-40, -20, 0, 20, 40], "axial": [-40, -20, 0, 20, 40], "mediastinum": [-24, -12, 0, 12, 24]}, "step_mm": {"coronal": 20, "sagittal": 20, "axial": 20, "mediastinum": 12}, "n_views": 866, "window": 0.02302919514477253, "diff_window": {"diff_r": 0.013053123839199543, "diff_c": 0.0048365117982029915, "diff": 0.014332141727209091}, "views_resp": [78, 102], "views_dual": [6, 23], "empty_dual": 0, "truth_grid": [20, 20]}]}, "fdknote": "Unbinned FDK beats respiratory-binned FDK on all three patients (25.99 / 23.89 / 24.59 dB against 22.02 / 21.90 / 21.68 dB). Dropping from 866 views to 77\u201396 per bin costs more in sparse-view streaking than motion blur costs in the first place \u2014 which is the practical argument for modelling motion rather than gating it away.", "footnote": "Reconstructions scored by <code>tools/proj_2d_metrics.py</code> and <code>tools/fdk_patient.py</code>; panels baked from the same checkpoints on one RTX 5090. Phantom figures are manuscript Tables 3 and 5. Patients are de-identified and acquisition dates removed.", "resp_source": {"case-a": "the fused median of the liver apex and both lung inferior borders", "case-b": "the fused median of the liver apex and both lung inferior borders", "case-c": "the liver apex alone \u2014 this acquisition does not contain the whole lung, so the lung inferior-border landmarks clamp at the detector edge and are excluded from the fusion"}};
 
 /* Panels come in three kinds. `grid` is how many states the sprite sheet holds:
    [1,1] is a still image, [nr,1] moves with respiration only, [nr,nc] with both.
    Binned FDK genuinely HAS a respiratory state -- it reconstructs each bin separately --
-   so freezing it would understate it. Dual gating adds the cardiac axis and pays in views. */
-const OURS = {key: "atlas", name: "Proposed 5D", sub: "continuous state, all 866 views"};
-const REFS = [
-  ["static",     "Static Gaussian",  "all views, no state"],
-  ["fdk_binned", "Binned FDK",       "respiratory bins"],
-  ["fdk_dual",   "Dual-gated FDK",   "respiratory × cardiac bins"],
-  ["fdk_all",    "Unbinned FDK",     "866 views, no state"],
+   so freezing it would understate it. Dual gating adds the cardiac axis and pays in views.
+   Ground truth exists only for the phantom, and moves with both. */
+const OURS = {key: "atlas", name: "Proposed 5D", sub: "continuous state, all views"};
+const BASE = [
+  ["static",     "Static Gaussian", "all views, no state"],
+  ["fdk_binned", "Binned FDK",      "respiratory bins"],
+  ["fdk_dual",   "Dual-gated FDK",  "respiratory × cardiac bins"],
+  ["fdk_all",    "Unbinned FDK",    "all views, no state"],
 ];
+const REFS_PT = BASE;
+const REFS_PH = [["truth", "Ground truth", "dual-gated XCAT, same state"]].concat(BASE);
 const DIF = [
   ["diff_r", "Respiratory only", "φʳ 0.10 → 0.50"],
   ["diff_c", "Cardiac only",     "φᶜ 0.00 → 0.50"],
   ["diff",   "Both axes",        "(0.10,0.10) → (0.50,0.50)"],
 ];
 const VLAB = {coronal: "Coronal", sagittal: "Sagittal", axial: "Axial", mediastinum: "Mediastinum"};
-let ci = 0, vi = 0, vw = "coronal", k = (D.nsl - 1) >> 1, ir = 5, ic = 3;
-let shown = new Set(), tR = null, tC = null;
-const cur = () => D.cases[ci];
 const el = (t, c, h) => { const n = document.createElement(t);
   if (c) n.className = c; if (h !== undefined) n.innerHTML = h; return n; };
-const grid = (key) => key === "atlas" || key === "fdk_dual" ? [D.nr, D.nc]
-                    : key === "fdk_binned" ? [D.nr, 1] : [1, 1];
 
-/* ---- segmented controls, the same pattern as the EUReCA viewer ---------- */
-function seg(host, items, isOn, click) {
-  host.innerHTML = "";
-  items.forEach(([val, label]) => {
-    const b = el("button", isOn(val) ? "active" : null, label);
-    b.setAttribute("aria-pressed", isOn(val));
-    b.onclick = () => { click(val); build(); };
-    host.appendChild(b);
-  });
-}
+/* ONE viewer implementation, stamped once for the patients and once for the phantom. The only
+   differences are the dataset, whether ground truth is among the comparands, and the id
+   prefix -- so the two cannot drift apart as either is edited. */
+function makeViewer(pfx, data, refs, defaults) {
+  const st = {ci: 0, vw: "coronal", k: (data.nsl - 1) >> 1, ir: 5, ic: 3,
+              shown: new Set(defaults || []), tR: null, tC: null};
+  const cur = () => data.cases[st.ci];
+  const $ = (id) => document.getElementById(pfx + "-" + id);
+  const grid = (key) => (key === "atlas" || key === "truth" || key === "fdk_dual")
+      ? [data.nr, data.nc] : key === "fdk_binned" ? [data.nr, 1] : [1, 1];
+  const src = (key) => `assets/${cur().slug}_${key}_${st.vw}_${st.k}.jpg`;
 
-function cell(key, name, sub, ours) {
-  const f = el("figure", "sweep-cell" + (ours ? " ours" : ""));
-  const sz = cur().sizes[vw], [nr, nc] = grid(key);
-  if (nr === 1 && nc === 1) {
-    const im = el("img", "panel zoomable");
-    im.src = `assets/${cur().slug}_${key}_${vw}_${k}.jpg`;
-    im.alt = `${name}, ${VLAB[vw]} slice ${k + 1} of ${D.nsl}`;
-    im.loading = "lazy";
-    im.onclick = () => lightbox(im.src);
-    f.appendChild(im);
-  } else {
-    const d = el("div", "panel-live");
-    d.style.aspectRatio = `${sz[0]} / ${sz[1]}`;
-    d.style.backgroundImage = `url("assets/${cur().slug}_${key}_${vw}_${k}.jpg")`;
-    d.style.backgroundSize = `${nr * 100}% ${nc * 100}%`;
-    d.dataset.nr = nr; d.dataset.nc = nc; d.dataset.key = key;
-    d.style.cursor = "zoom-in";
-    d.title = "Click to enlarge the current state";
-    d.onclick = () => zoomLive(key, sz, nr, nc);
-    f.appendChild(d);
+  function seg(host, items, isOn, click) {
+    host.innerHTML = "";
+    items.forEach(([val, label]) => {
+      const b = el("button", isOn(val) ? "active" : null, label);
+      b.setAttribute("aria-pressed", isOn(val));
+      b.onclick = () => { click(val); build(); };
+      host.appendChild(b);
+    });
   }
-  f.appendChild(el("figcaption", null, `<b>${name}</b><span class="cell-sub">${sub}</span>`));
-  return f;
-}
 
-function build() {
-  seg(document.getElementById("seg-case"), D.cases.map(c => [c.slug, c.label]),
-      v => cur().slug === v, v => { ci = D.cases.findIndex(c => c.slug === v); });
-  seg(document.getElementById("seg-view"), D.views.map(v => [v, VLAB[v]]),
-      v => vw === v, v => { vw = v; });
-  seg(document.getElementById("seg-ref"), REFS.map(([kk, nm]) => [kk, nm]),
-      v => shown.has(v), v => { shown.has(v) ? shown.delete(v) : shown.add(v); });
-  seg(document.getElementById("seg-vid"), D.cases.map(c => [c.slug, c.label]),
-      v => D.cases[vi].slug === v, v => { vi = D.cases.findIndex(c => c.slug === v); });
-
-  const mm = cur().mm[vw];
-  const slEl = document.getElementById("sl");
-  slEl.max = D.nsl - 1; slEl.value = k;
-  const tk = document.getElementById("sl-ticks");
-  tk.innerHTML = "";
-  mm.forEach(m => tk.appendChild(el("span", null, (m > 0 ? "+" : "") + m)));
-
-  const g = document.getElementById("cmp");
-  g.innerHTML = "";
-  g.className = "sweep-grid" + (shown.size === 0 ? " single" : "");
-  g.appendChild(cell(OURS.key, OURS.name, OURS.sub, true));
-  REFS.filter(([kk]) => shown.has(kk))
-      .forEach(([kk, nm, sub]) => g.appendChild(cell(kk, nm, sub, false)));
-
-  const dg = document.getElementById("diffs");
-  dg.innerHTML = "";
-  DIF.forEach(([kk, nm, sub]) => dg.appendChild(cell(kk, nm, sub, false)));
-
-  const c = cur();
-  document.getElementById("cmp-legend").innerHTML =
-    `<b>${c.label}</b> &middot; ${VLAB[vw]} plane, slice index ${c.slices[vw][k]} ` +
-    `(${mm[k] > 0 ? "+" : ""}${mm[k]} mm from the reference plane), 2 mm voxels &middot; ` +
-    `binned FDK ${c.views_resp[0]}&ndash;${c.views_resp[1]} views per bin, ` +
-    `dual-gated ${c.views_dual[0]}&ndash;${c.views_dual[1]} &middot; ` +
-    `the proposed model uses all ${c.n_views} for every state`;
-
-  const v = document.getElementById("qa-video"), cv = D.cases[vi];
-  const src = `assets/${cv.slug}_surrogates.mp4`;
-  if (!v.src.endsWith(src)) v.src = src;
-  document.getElementById("vid-cap").innerHTML =
-    `<b>Surrogate tracking, ${cv.label}.</b> Respiratory state here is fused from ` +
-    `${D.resp_source[cv.slug]}. Every landmark is read back from the extraction the ` +
-    `reconstruction used; no segmentation is re-run for the video.`;
-
-  paint();
-  preload();
-}
-
-/* ---- the scrubber: a pan across pre-rendered sheets, never a render ----- */
-function paint() {
-  document.getElementById("pr-val").textContent = (ir / D.nr).toFixed(2);
-  document.getElementById("pc-val").textContent = (ic / D.nc).toFixed(2);
-  document.getElementById("sl-val").textContent =
-    (cur().mm[vw][k] > 0 ? "+" : "") + cur().mm[vw][k];
-  document.querySelectorAll(".panel-live").forEach(d => {
-    const nr = +d.dataset.nr, nc = +d.dataset.nc;
-    const x = nr > 1 ? ir / (nr - 1) * 100 : 0;
-    const y = nc > 1 ? ic / (nc - 1) * 100 : 0;
-    d.style.backgroundPosition = `${x}% ${y}%`;
-  });
-}
-
-function preload() {
-  [k - 1, k + 1].filter(j => j >= 0 && j < D.nsl).forEach(j => {
-    new Image().src = `assets/${cur().slug}_atlas_${vw}_${j}.jpg`;
-  });
-}
-
-const sl = document.getElementById("sl"), pr = document.getElementById("pr"),
-      pc = document.getElementById("pc");
-sl.oninput = () => { k = +sl.value; build(); };
-pr.oninput = () => { ir = +pr.value; paint(); };
-pc.oninput = () => { ic = +pc.value; paint(); };
-
-function anim(btn, which) {
-  const on = btn.classList.toggle("active");
-  if (!on) {
-    clearInterval(which === "r" ? tR : tC);
-    which === "r" ? tR = null : tC = null;
-    btn.innerHTML = "&#9654;";
-    return;
+  function cell(key, name, sub, ours) {
+    const f = el("figure", "sweep-cell" + (ours ? " ours" : "") + (key === "truth" ? " truth" : ""));
+    const sz = cur().sizes[st.vw], g = grid(key), nr = g[0], nc = g[1];
+    if (nr === 1 && nc === 1) {
+      const im = el("img", "panel zoomable");
+      im.src = src(key);
+      im.alt = `${name}, ${VLAB[st.vw]} slice ${st.k + 1} of ${data.nsl}`;
+      im.loading = "lazy";
+      im.onclick = () => lightbox(im.src);
+      f.appendChild(im);
+    } else {
+      const u = src(key);
+      const d = el("div", "panel-live");
+      d.style.aspectRatio = `${sz[0]} / ${sz[1]}`;
+      d.style.backgroundImage = `url("${u}")`;
+      d.style.backgroundSize = `${nr * 100}% ${nc * 100}%`;
+      d.dataset.nr = nr; d.dataset.nc = nc;
+      d.style.cursor = "zoom-in";
+      d.title = "Click to enlarge the current state";
+      d.onclick = () => zoomLive(u, sz, nr, nc, st.ir, st.ic);
+      f.appendChild(d);
+    }
+    f.appendChild(el("figcaption", null, `<b>${name}</b><span class="cell-sub">${sub}</span>`));
+    return f;
   }
-  btn.innerHTML = "&#9632;";
-  const id = setInterval(() => {
-    if (which === "r") { ir = (ir + 1) % D.nr; pr.value = ir; }
-    else { ic = (ic + 1) % D.nc; pc.value = ic; }
+
+  function build() {
+    seg($("case"), data.cases.map(c => [c.slug, c.label]),
+        v => cur().slug === v, v => { st.ci = data.cases.findIndex(c => c.slug === v); });
+    seg($("view"), data.views.map(v => [v, VLAB[v]]), v => st.vw === v, v => { st.vw = v; });
+    seg($("ref"), refs.map(r => [r[0], r[1]]), v => st.shown.has(v),
+        v => { if (st.shown.has(v)) st.shown.delete(v); else st.shown.add(v); });
+
+    const mm = cur().mm[st.vw];
+    $("sl").max = data.nsl - 1; $("sl").value = st.k;
+    const tk = $("sl-ticks");
+    tk.innerHTML = "";
+    mm.forEach(m => tk.appendChild(el("span", null, (m > 0 ? "+" : "") + m)));
+
+    const g = $("cmp");
+    g.innerHTML = "";
+    g.className = "sweep-grid" + (st.shown.size === 0 ? " single" : "");
+    g.appendChild(cell(OURS.key, OURS.name, OURS.sub, true));
+    refs.filter(r => st.shown.has(r[0]))
+        .forEach(r => g.appendChild(cell(r[0], r[1], r[2], false)));
+
+    const dg = $("diffs");
+    dg.innerHTML = "";
+    DIF.forEach(r => dg.appendChild(cell(r[0], r[1], r[2], false)));
+
+    const c = cur();
+    $("legend").innerHTML =
+      `<b>${c.label}</b> &middot; ${VLAB[st.vw]} plane, slice index ${c.slices[st.vw][st.k]} ` +
+      `(${mm[st.k] > 0 ? "+" : ""}${mm[st.k]} mm from the reference plane), 2 mm voxels &middot; ` +
+      `binned FDK ${c.views_resp[0]}&ndash;${c.views_resp[1]} views per bin, ` +
+      `dual-gated ${c.views_dual[0]}&ndash;${c.views_dual[1]} &middot; ` +
+      `the proposed model uses all ${c.n_views} for every state` +
+      (c.truth_grid ? ` &middot; truth taken from the ${c.truth_grid[0]}&times;${c.truth_grid[1]}` +
+                      " dual-gated grid at the nearest cell" : "");
     paint();
-  }, which === "r" ? 260 : 190);
-  which === "r" ? tR = id : tC = id;
+    [st.k - 1, st.k + 1].filter(j => j >= 0 && j < data.nsl).forEach(j => {
+      new Image().src = `assets/${cur().slug}_atlas_${st.vw}_${j}.jpg`;
+    });
+  }
+
+  /* the scrubber: a pan across pre-rendered sheets, never a render */
+  function paint() {
+    $("pr-val").textContent = (st.ir / data.nr).toFixed(2);
+    $("pc-val").textContent = (st.ic / data.nc).toFixed(2);
+    $("sl-val").textContent = (cur().mm[st.vw][st.k] > 0 ? "+" : "") + cur().mm[st.vw][st.k];
+    $("cmp").querySelectorAll(".panel-live").forEach(d => {
+      const nr = +d.dataset.nr, nc = +d.dataset.nc;
+      d.style.backgroundPosition =
+        `${nr > 1 ? st.ir / (nr - 1) * 100 : 0}% ${nc > 1 ? st.ic / (nc - 1) * 100 : 0}%`;
+    });
+  }
+
+  $("sl").oninput = () => { st.k = +$("sl").value; build(); };
+  $("pr").oninput = () => { st.ir = +$("pr").value; paint(); };
+  $("pc").oninput = () => { st.ic = +$("pc").value; paint(); };
+
+  function anim(btn, which) {
+    const on = btn.classList.toggle("active");
+    if (!on) {
+      clearInterval(which === "r" ? st.tR : st.tC);
+      if (which === "r") st.tR = null; else st.tC = null;
+      btn.innerHTML = "&#9654;";
+      return;
+    }
+    btn.innerHTML = "&#9632;";
+    const id = setInterval(() => {
+      if (which === "r") { st.ir = (st.ir + 1) % data.nr; $("pr").value = st.ir; }
+      else { st.ic = (st.ic + 1) % data.nc; $("pc").value = st.ic; }
+      paint();
+    }, which === "r" ? 260 : 190);
+    if (which === "r") st.tR = id; else st.tC = id;
+  }
+  $("play-r").onclick = function () { anim(this, "r"); };
+  $("play-c").onclick = function () { anim(this, "c"); };
+
+  /* wheel and arrows step slices, scoped to this viewer so the two cannot cross-talk */
+  ["cmp", "diffs"].forEach(id => {
+    const n = $(id);
+    n.tabIndex = 0;
+    n.addEventListener("wheel", e => {
+      e.preventDefault();
+      const j = st.k + (e.deltaY > 0 ? 1 : -1);
+      if (j >= 0 && j < data.nsl) { st.k = j; build(); }
+    }, {passive: false});
+    n.addEventListener("keydown", e => {
+      if (e.key === "ArrowLeft" && st.k > 0) { st.k--; build(); }
+      if (e.key === "ArrowRight" && st.k < data.nsl - 1) { st.k++; build(); }
+    });
+  });
+
+  build();
+  return {build};
 }
-document.getElementById("play-r").onclick = function () { anim(this, "r"); };
-document.getElementById("play-c").onclick = function () { anim(this, "c"); };
-
-["cmp", "diffs"].forEach(id => document.getElementById(id).addEventListener("wheel", e => {
-  e.preventDefault();
-  const n = k + (e.deltaY > 0 ? 1 : -1);
-  if (n >= 0 && n < D.nsl) { k = n; build(); }
-}, {passive: false}));
-
-document.addEventListener("keydown", e => {
-  if (e.target.tagName === "INPUT" || e.target.tagName === "VIDEO") return;
-  if (e.key === "ArrowLeft" && k > 0) { k--; build(); }
-  if (e.key === "ArrowRight" && k < D.nsl - 1) { k++; build(); }
-});
 
 /* ---- lightbox ----------------------------------------------------------- */
 const lb = document.getElementById("lightbox"), lbImg = document.getElementById("lb-img");
-function lightbox(src) {
-  lbImg.src = src; lb.style.display = "block"; lb.setAttribute("aria-hidden", "false");
+function lightbox(s) {
+  lbImg.src = s; lb.style.display = "block"; lb.setAttribute("aria-hidden", "false");
 }
 function closeLb() { lb.style.display = "none"; lb.setAttribute("aria-hidden", "true"); }
 lb.onclick = closeLb;
 document.getElementById("lb-close").onclick = closeLb;
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeLb(); });
-document.querySelectorAll("img.zoomable").forEach(i => i.onclick = () => lightbox(i.src));
+document.querySelectorAll("img.zoomable").forEach(i => { i.onclick = () => lightbox(i.src); });
 
 /* a live panel is a sprite sheet, so enlarging it means cutting the current cell out */
-function zoomLive(key, sz, nr, nc) {
+function zoomLive(url, sz, nr, nc, ir, ic) {
   const img = new Image();
   img.onload = () => {
     const c = document.createElement("canvas");
@@ -380,8 +433,33 @@ function zoomLive(key, sz, nr, nc) {
     c.getContext("2d").drawImage(img, nr > 1 ? -ir * sz[0] : 0, nc > 1 ? -ic * sz[1] : 0);
     lightbox(c.toDataURL("image/jpeg", 0.92));
   };
-  img.src = `assets/${cur().slug}_${key}_${vw}_${k}.jpg`;
+  img.src = url;
 }
+
+/* ---- the two viewers ---------------------------------------------------- */
+makeViewer("pt", D, REFS_PT, []);
+makeViewer("ph", D.phantom, REFS_PH, ["truth"]);
+
+/* ---- signal-extraction video -------------------------------------------- */
+let vi = 0;
+function buildVideo() {
+  const host = document.getElementById("seg-vid");
+  host.innerHTML = "";
+  D.cases.forEach((c, i) => {
+    const b = el("button", i === vi ? "active" : null, c.label);
+    b.setAttribute("aria-pressed", i === vi);
+    b.onclick = () => { vi = i; buildVideo(); };
+    host.appendChild(b);
+  });
+  const cv = D.cases[vi], v = document.getElementById("qa-video");
+  const s = `assets/${cv.slug}_surrogates.mp4`;
+  if (!v.src.endsWith(s)) v.src = s;
+  document.getElementById("vid-cap").innerHTML =
+    `<b>Surrogate tracking, ${cv.label}.</b> Respiratory state here is fused from ` +
+    `${D.resp_source[cv.slug]}. Every landmark is read back from the extraction the ` +
+    `reconstruction used; no segmentation is re-run for the video.`;
+}
+buildVideo();
 
 /* ---- tables and prose --------------------------------------------------- */
 function table(host, spec) {
@@ -411,7 +489,6 @@ D.notes.forEach(n => {
   nh.appendChild(d);
 });
 
-build();
 </script>
 </body>
 </html>

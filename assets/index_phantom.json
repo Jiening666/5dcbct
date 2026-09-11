@@ -1,0 +1,229 @@
+{
+ "views": [
+  "coronal",
+  "sagittal",
+  "axial",
+  "mediastinum"
+ ],
+ "nr": 10,
+ "nc": 6,
+ "nsl": 5,
+ "cases": [
+  {
+   "slug": "phan-a",
+   "label": "XCAT \u00b7 analytic schedule",
+   "sizes": {
+    "coronal": [
+     161,
+     138
+    ],
+    "sagittal": [
+     132,
+     138
+    ],
+    "axial": [
+     132,
+     161
+    ],
+    "mediastinum": [
+     60,
+     60
+    ]
+   },
+   "slices": {
+    "coronal": [
+     74,
+     84,
+     94,
+     104,
+     114
+    ],
+    "sagittal": [
+     108,
+     118,
+     128,
+     138,
+     148
+    ],
+    "axial": [
+     24,
+     34,
+     44,
+     54,
+     64
+    ],
+    "mediastinum": [
+     53,
+     59,
+     65,
+     71,
+     77
+    ]
+   },
+   "mm": {
+    "coronal": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "sagittal": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "axial": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "mediastinum": [
+     -24,
+     -12,
+     0,
+     12,
+     24
+    ]
+   },
+   "step_mm": {
+    "coronal": 20,
+    "sagittal": 20,
+    "axial": 20,
+    "mediastinum": 12
+   },
+   "n_views": 866,
+   "window": 0.02302919514477253,
+   "diff_window": {
+    "diff_r": 0.013053123839199543,
+    "diff_c": 0.0048365117982029915,
+    "diff": 0.014320071786642075
+   },
+   "views_resp": [
+    81,
+    92
+   ],
+   "views_dual": [
+    12,
+    16
+   ],
+   "empty_dual": 0,
+   "truth_grid": [
+    20,
+    20
+   ]
+  },
+  {
+   "slug": "phan-b",
+   "label": "XCAT \u00b7 replayed schedule",
+   "sizes": {
+    "coronal": [
+     161,
+     138
+    ],
+    "sagittal": [
+     132,
+     138
+    ],
+    "axial": [
+     132,
+     161
+    ],
+    "mediastinum": [
+     60,
+     60
+    ]
+   },
+   "slices": {
+    "coronal": [
+     74,
+     84,
+     94,
+     104,
+     114
+    ],
+    "sagittal": [
+     108,
+     118,
+     128,
+     138,
+     148
+    ],
+    "axial": [
+     24,
+     34,
+     44,
+     54,
+     64
+    ],
+    "mediastinum": [
+     53,
+     59,
+     65,
+     71,
+     77
+    ]
+   },
+   "mm": {
+    "coronal": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "sagittal": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "axial": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "mediastinum": [
+     -24,
+     -12,
+     0,
+     12,
+     24
+    ]
+   },
+   "step_mm": {
+    "coronal": 20,
+    "sagittal": 20,
+    "axial": 20,
+    "mediastinum": 12
+   },
+   "n_views": 866,
+   "window": 0.02302919514477253,
+   "diff_window": {
+    "diff_r": 0.013053123839199543,
+    "diff_c": 0.0048365117982029915,
+    "diff": 0.014332141727209091
+   },
+   "views_resp": [
+    78,
+    102
+   ],
+   "views_dual": [
+    6,
+    23
+   ],
+   "empty_dual": 0,
+   "truth_grid": [
+    20,
+    20
+   ]
+  }
+ ]
+}
