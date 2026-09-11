@@ -1,0 +1,304 @@
+{
+ "views": [
+  "coronal",
+  "sagittal",
+  "axial",
+  "mediastinum"
+ ],
+ "nr": 10,
+ "nc": 6,
+ "nsl": 5,
+ "cases": [
+  {
+   "slug": "case-a",
+   "label": "Patient A",
+   "sizes": {
+    "coronal": [
+     207,
+     140
+    ],
+    "sagittal": [
+     132,
+     140
+    ],
+    "axial": [
+     207,
+     132
+    ],
+    "mediastinum": [
+     60,
+     60
+    ]
+   },
+   "slices": {
+    "coronal": [
+     133,
+     143,
+     153,
+     163,
+     173
+    ],
+    "sagittal": [
+     107,
+     117,
+     127,
+     137,
+     147
+    ],
+    "axial": [
+     23,
+     33,
+     43,
+     53,
+     63
+    ],
+    "mediastinum": [
+     57,
+     63,
+     69,
+     75,
+     81
+    ]
+   },
+   "mm": {
+    "coronal": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "sagittal": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "axial": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "mediastinum": [
+     -24,
+     -12,
+     0,
+     12,
+     24
+    ]
+   },
+   "step_mm": {
+    "coronal": 20,
+    "sagittal": 20,
+    "axial": 20,
+    "mediastinum": 12
+   },
+   "fdk_bin": 5,
+   "fdk_views": 77,
+   "n_views": 866,
+   "window": 0.028291517402976786,
+   "diff_window": {
+    "diff_r": 0.016803251858800636,
+    "diff_c": 0.006572650233283638,
+    "diff": 0.016837791092693802
+   }
+  },
+  {
+   "slug": "case-b",
+   "label": "Patient B",
+   "sizes": {
+    "coronal": [
+     206,
+     132
+    ],
+    "sagittal": [
+     236,
+     132
+    ],
+    "axial": [
+     206,
+     236
+    ],
+    "mediastinum": [
+     60,
+     60
+    ]
+   },
+   "slices": {
+    "coronal": [
+     137,
+     147,
+     157,
+     167,
+     177
+    ],
+    "sagittal": [
+     72,
+     82,
+     92,
+     102,
+     112
+    ],
+    "axial": [
+     17,
+     27,
+     37,
+     47,
+     57
+    ],
+    "mediastinum": [
+     56,
+     62,
+     68,
+     74,
+     80
+    ]
+   },
+   "mm": {
+    "coronal": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "sagittal": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "axial": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "mediastinum": [
+     -24,
+     -12,
+     0,
+     12,
+     24
+    ]
+   },
+   "step_mm": {
+    "coronal": 20,
+    "sagittal": 20,
+    "axial": 20,
+    "mediastinum": 12
+   },
+   "fdk_bin": 5,
+   "fdk_views": 84,
+   "n_views": 866,
+   "window": 0.027621186152100564,
+   "diff_window": {
+    "diff_r": 0.015402074262499796,
+    "diff_c": 0.004388797372579554,
+    "diff": 0.015410639457404545
+   }
+  },
+  {
+   "slug": "case-c",
+   "label": "Patient C",
+   "sizes": {
+    "coronal": [
+     279,
+     140
+    ],
+    "sagittal": [
+     230,
+     140
+    ],
+    "axial": [
+     279,
+     230
+    ],
+    "mediastinum": [
+     60,
+     60
+    ]
+   },
+   "slices": {
+    "coronal": [
+     87,
+     97,
+     107,
+     117,
+     127
+    ],
+    "sagittal": [
+     50,
+     60,
+     70,
+     80,
+     90
+    ],
+    "axial": [
+     2,
+     12,
+     22,
+     32,
+     42
+    ],
+    "mediastinum": [
+     50,
+     56,
+     62,
+     68,
+     74
+    ]
+   },
+   "mm": {
+    "coronal": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "sagittal": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "axial": [
+     -40,
+     -20,
+     0,
+     20,
+     40
+    ],
+    "mediastinum": [
+     -24,
+     -12,
+     0,
+     12,
+     24
+    ]
+   },
+   "step_mm": {
+    "coronal": 20,
+    "sagittal": 20,
+    "axial": 20,
+    "mediastinum": 12
+   },
+   "fdk_bin": 5,
+   "fdk_views": 79,
+   "n_views": 866,
+   "window": 0.02840548449195913,
+   "diff_window": {
+    "diff_r": 0.016686619918793465,
+    "diff_c": 0.003304377555847185,
+    "diff": 0.016651055958122135
+   }
+  }
+ ]
+}

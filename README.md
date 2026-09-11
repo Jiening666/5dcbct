@@ -5,8 +5,8 @@ Interactive companion to *Cardiorespiratory 5D-CBCT from a routine one-minute ac
 **[Open the viewer →](https://jiening666.github.io/5dcbct/)**
 
 Three clinical Halcyon HyperSight acquisitions (866 projections, ~60 s, no additional imaging
-dose) are compared across four reconstructions on one common grid, one common intensity scale
-and one display window:
+dose) compared across four reconstructions on one common grid, one common intensity scale and
+one display window:
 
 | | |
 |---|---|
@@ -15,14 +15,23 @@ and one display window:
 | Static Gaussian | all views, motion-averaged |
 | **Proposed 5D** | continuous respiratory–cardiac state |
 
-Respiratory and cardiac state are adjustable live. Only the 5D column responds — the three
-baselines have no state to move.
+Pick a patient and a plane, step through five slices per plane with the slider or the mouse
+wheel, and move respiratory and cardiac state independently. Only the 5D panel responds to
+state — the three baselines have no state to move.
 
 ### How it renders
 
-The page is a single self-contained HTML file with no server, no renderer and no GPU. Each
-fitted model was queried offline on a 10 × 6 grid of respiratory × cardiac states and the
-slices packed into one sprite sheet per view; moving a slider pans that sheet.
+No server, no renderer, no GPU. Each fitted model was queried offline on a 10 × 6 grid of
+respiratory × cardiac states, for every plane and slice, and the results packed into one sprite
+sheet per (plane, slice); moving a state slider pans that sheet with CSS. The page itself is
+23 KB and fetches only the images it is showing.
+
+```
+index.html          the page
+static/style.css    styling
+assets/             420 baked panels and sprite sheets + the method figure
+assets/index.json   plane, slice and window metadata for the bake
+```
 
 ### Notes
 
