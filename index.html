@@ -34,15 +34,34 @@
       respiratory&ndash;cardiac state, keeps every projection, and can be queried anywhere on the state
       torus &mdash; including states the scanner never visited.
     </p>
-    <div class="cards">
-      <div class="card"><h3>One acquisition, every state</h3><p>No extra dose, no breath-hold, no
-        external surrogate. Both physiological signals are extracted from the projections themselves.</p></div>
-      <div class="card"><h3>All 866 views, always</h3><p>Every projection constrains the one model,
-        instead of ~80 views constraining each of ten independent bins.</p></div>
-      <div class="card"><h3>Mass-conserving transport</h3><p>Gaussian shape and density are slaved to
-        the deformation Jacobian, so anatomy moves rather than appearing and disappearing.</p></div>
-      <div class="card"><h3>Validated on ground truth</h3><p>Twelve dual-gated XCAT cases with
-        volumetric truth: 96% of true diaphragm excursion recovered.</p></div>
+    <div class="cards feature">
+      <div class="card">
+        <span class="card-stat">866 views &middot; no added dose</span>
+        <h3>Routine scan in, motion out</h3>
+        <p>The same one-minute rotation already acquired for setup. No breath-hold, no gating
+          hardware, no extra imaging dose &mdash; the motion is recovered from the scan you
+          already have.</p>
+      </div>
+      <div class="card">
+        <span class="card-stat">2 signals &middot; no surrogates</span>
+        <h3>Both states, read from the projections</h3>
+        <p>Respiratory and cardiac state come from the projection images themselves &mdash;
+          diaphragm and cardiac landmarks tracked frame by frame. No marker block, no belt,
+          no ECG.</p>
+      </div>
+      <div class="card">
+        <span class="card-stat">shape + density from det&nbsp;F</span>
+        <h3>Transport that conserves mass</h3>
+        <p>One canonical anatomy is deformed, not re-reconstructed per bin. Gaussian shape and
+          density follow the deformation Jacobian, so tissue moves rather than appearing and
+          disappearing, and correspondence holds across states.</p>
+      </div>
+      <div class="card">
+        <span class="card-stat">12 XCAT cases &middot; 3 patients</span>
+        <h3>Validated where truth exists &mdash; and where it doesn't</h3>
+        <p>Volumetric ground truth on twelve dual-gated phantoms, recovering 96% of true
+          diaphragm excursion; projection-domain fidelity on three clinical Halcyon scans.</p>
+      </div>
     </div>
   </section>
 
