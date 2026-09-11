@@ -38,29 +38,26 @@
       <div class="card">
         <span class="card-stat">866 views &middot; no added dose</span>
         <h3>Routine scan in, motion out</h3>
-        <p>The same one-minute rotation already acquired for setup. No breath-hold, no gating
-          hardware, no extra imaging dose &mdash; the motion is recovered from the scan you
-          already have.</p>
+        <p>The one-minute rotation already acquired for setup. No breath-hold, no gating
+          hardware, no extra dose.</p>
       </div>
       <div class="card">
         <span class="card-stat">2 signals &middot; no surrogates</span>
-        <h3>Both states, read from the projections</h3>
-        <p>Respiratory and cardiac state come from the projection images themselves &mdash;
-          diaphragm and cardiac landmarks tracked frame by frame. No marker block, no belt,
-          no ECG.</p>
+        <h3>Respiratory and cardiac state from the projections</h3>
+        <p>Both signals are tracked frame by frame in the projections themselves. No marker
+          block, no belt, no ECG.</p>
       </div>
       <div class="card">
         <span class="card-stat">shape + density from det&nbsp;F</span>
-        <h3>Transport that conserves mass</h3>
-        <p>One canonical anatomy is deformed, not re-reconstructed per bin. Gaussian shape and
-          density follow the deformation Jacobian, so tissue moves rather than appearing and
-          disappearing, and correspondence holds across states.</p>
+        <h3>A physics prior that conserves mass</h3>
+        <p>One canonical anatomy is deformed, not re-reconstructed per bin. Shape and density
+          follow the deformation Jacobian.</p>
       </div>
       <div class="card">
         <span class="card-stat">12 XCAT cases &middot; 3 patients</span>
-        <h3>Validated where truth exists &mdash; and where it doesn't</h3>
-        <p>Volumetric ground truth on twelve dual-gated phantoms, recovering 96% of true
-          diaphragm excursion; projection-domain fidelity on three clinical Halcyon scans.</p>
+        <h3>Validated on both patient data and XCAT phantom</h3>
+        <p>Volumetric ground truth on twelve dual-gated phantoms; projection fidelity on three
+          clinical Halcyon scans.</p>
       </div>
     </div>
   </section>

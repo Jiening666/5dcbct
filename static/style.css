@@ -204,8 +204,10 @@ table.nums tr.total td { font-weight: 700; border-top: 2px solid var(--border); 
 .cards.feature { gap: 1.1rem; }
 .cards.feature .card { border-top: 2px solid var(--accent);
   display: flex; flex-direction: column; gap: 0.4rem; padding: 0.9rem 1.1rem 1.05rem; }
-.cards.feature .card h3 { margin: 0; font-size: 1.05rem; color: var(--fg); line-height: 1.3; }
-.cards.feature .card p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+.cards.feature .card h3 { margin: 0; font-size: 1.22rem; color: var(--fg);
+  line-height: 1.22; letter-spacing: -0.01em; text-wrap: balance; }
+.cards.feature .card p { margin: 0; font-size: 0.88rem; color: var(--muted);
+  line-height: 1.5; }
 .card-stat { font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 0.7rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--accent);
   font-variant-numeric: tabular-nums; }
