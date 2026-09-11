@@ -2,8 +2,7 @@
  "views": [
   "coronal",
   "sagittal",
-  "axial",
-  "mediastinum"
+  "axial"
  ],
  "nr": 10,
  "nc": 6,
@@ -24,10 +23,6 @@
     "axial": [
      132,
      161
-    ],
-    "mediastinum": [
-     60,
-     60
     ]
    },
    "slices": {
@@ -51,13 +46,6 @@
      44,
      54,
      64
-    ],
-    "mediastinum": [
-     53,
-     59,
-     65,
-     71,
-     77
     ]
    },
    "mm": {
@@ -81,20 +69,12 @@
      0,
      20,
      40
-    ],
-    "mediastinum": [
-     -24,
-     -12,
-     0,
-     12,
-     24
     ]
    },
    "step_mm": {
     "coronal": 20,
     "sagittal": 20,
-    "axial": 20,
-    "mediastinum": 12
+    "axial": 20
    },
    "n_views": 866,
    "window": 0.02302919514477253,
@@ -132,10 +112,6 @@
     "axial": [
      132,
      161
-    ],
-    "mediastinum": [
-     60,
-     60
     ]
    },
    "slices": {
@@ -159,13 +135,6 @@
      44,
      54,
      64
-    ],
-    "mediastinum": [
-     53,
-     59,
-     65,
-     71,
-     77
     ]
    },
    "mm": {
@@ -189,20 +158,12 @@
      0,
      20,
      40
-    ],
-    "mediastinum": [
-     -24,
-     -12,
-     0,
-     12,
-     24
     ]
    },
    "step_mm": {
     "coronal": 20,
     "sagittal": 20,
-    "axial": 20,
-    "mediastinum": 12
+    "axial": 20
    },
    "n_views": 866,
    "window": 0.02302919514477253,
