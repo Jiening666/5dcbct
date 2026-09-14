@@ -447,13 +447,14 @@ function makeViewer(pfx, data, refs, defaults) {
   });
 
   build();
-  /* The viewer opens BREATHING. A still first frame looks like every other figure in the
-     paper and gives away nothing that the page exists to show -- that one column is a
-     function of state and the rest are not. Respiration only: it is the motion that reads at
-     a glance, and starting both at once makes neither legible. Honoured only when the
-     visitor has not asked for reduced motion. */
+  /* The viewer opens with BOTH cycles running. A still first frame looks like every other
+     figure in the paper and gives away nothing that the page exists to show -- that one
+     column is a function of state and the rest are not. Each runs at its own measured period,
+     so the two stay at the real ratio (about four beats per breath) rather than beating
+     against each other. Suppressed when the visitor has asked for reduced motion. */
   if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     anim($("play-r"), "r");
+    anim($("play-c"), "c");
   }
   return {build};
 }
